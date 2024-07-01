@@ -1,0 +1,20 @@
+version: '3.9'
+
+volumes:
+  cache:
+    driver: local
+networks:
+  bid:
+    driver: bridge
+
+services:
+  api:
+    container_name: bid-server
+    image: "gitlab.ikameglobal.com:5050/begamob/backend/bid-ads-ortb"
+    ports:
+      - "80:80"
+    volumes:
+      - ./logs:/Users/tuki/Code/ikame/ads-bid-remake/logs
+    networks:
+      - bid
+    restart: always
